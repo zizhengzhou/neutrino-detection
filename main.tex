@@ -1,0 +1,252 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{slashed}
+\usepackage{xcolor}
+\usepackage[a4paper, margin=1in]{geometry} 
+
+\title{Notes on neutrino detection}
+\author{Kaixiang Gou, Yixin Li, Yuxiang Liu, Zizheng Zhou}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+%\section{Introduction}
+\section{Neutrino flux}
+To estimate the theoretical event rate for our detectors, it is essential to first calculate the neutrino flux spectrum $\phi_\nu(E_\nu)$, expressed in units of $\rm cm^{-2}\,s^{-1}\,MeV^{-1}$ vs. $\rm MeV$.
+The event rate is given by
+\begin{equation}
+    \frac{d N}{d T_e} = N_{\text{target}} \int d E_\nu \, \phi_\nu(E_\nu) \, \frac{d\sigma}{dT_e}(E_\nu, T_e) \nonumber
+\end{equation}
+where $\frac{d N}{d T_e}$ denotes the event rate per transferred energy (recoil energy), with units of $\rm counts/(kg \cdot day \cdot keV)$ vs. $\rm keV$. $N_{\text{target}}$ represents the number of targets per kilogram of detector mass. For our silicon (Si) target, the number of electrons is approximately $N_{\text{target}} \approx 3.00 \times 10^{26} \,/\,\text{kg}$.
+
+We consider several types of neutrinos as sources to calculate their possible event rates. \textcolor{red}{Furthermore, based on the calculation now, we propose to concentrate on the reactor neutrino case, which provide significant events in our region of interest (ROI), 10-100 eV.}
+\subsection{Reactor neutrino flux}
+\subsubsection{IBD based flux}
+The framework for Daya Bay neutrino measurement is detailed in \href{http://arxiv.org/abs/1607.05378}{1607.05378}. The Daya Bay collaboration measured the flux and energy spectrum of reactor antineutrinos via the inverse beta decay (IBD) reaction. The latest data was released in \href{https://arxiv.org/abs/2501.00746}{2501.00746}. To obtain the antineutrino flux $\dd\phi/\dd E_\nu$, we must convert the measured IBD spectrum $S(E)$, using their relationship:
+\begin{equation}
+    S(E_\nu) = \frac{1}{4\pi L^2} \eval{\frac{\dd\phi}{\dd E_\nu}}_{\text{core}} \epsilon_d N_p \sigma(E_\nu),
+\end{equation}
+where $\sigma(E_\nu)$ is the IBD cross-section, $L$ is the distance between the detector and the reactor core, $\epsilon_d$ is the detector efficiency to capture neutrinos and $N_p$ is the number of target protons.
+
+The data released have already taken into account the detector parameters $N_p$ and $\epsilon_d$. Therefore, we can use a simpler relation to derive the flux from the IBD yield data $Y(E_\text{recon})$, which is given in units of $\text{cm}^2/\text{fission}/\text{MeV}$. The reconstructed positron energy $E_\text{recon}$, is related to the neutrino energy by $E_\nu \approx E_\text{recon} + 0.784 \text{ MeV}$. The antineutrino flux is then given by:
+\begin{equation}
+    \eval{\frac{\dd\phi}{\dd E_\nu}}_{\text{detector}} = \frac{1}{4\pi L^2} \frac{Y(E_\text{recon}+ 0.784 \text{ MeV}) }{\sigma(E_\nu)} \frac{P_\text{th}}{E_\text{fission}},
+\end{equation}
+where $P_\text{th}$ is the thermal power of the reactor and $E_\text{fission}$ is the energy released per fission.
+
+For a simplified calculation, we can approximate the multiple reactor cores as a single core with a thermal power of $P_\text{th}=2.9 \text{ GW}$. Although the nuclear fuel contains a time-varying composition of $^{235}\text{U}$, $^{239}\text{Pu}$, $^{238}\text{U}$, and $^{241}\text{Pu}$, we can approximate it as pure $^{235}\text{U}$, for which $E_\text{fission} \approx 202.36 \text{ MeV}$.
+
+Reactors produce a pure flux of electron antineutrinos. Over baselines of $500\text{ m}$ to $2000\text{ m}$, flavor oscillations cause approximately $1-10\%$ of them to change to other flavors. Thus, we neglect flavor changing due to oscillations.
+
+
+\subsubsection{Purely theoretical derivation}
+The experimental detection cannot cover the full energy spectrum of reactor neutrinos. \textcolor{red}{The Daya Bay experiment (as mentioned above), along with the latest JUNO experiment (\href{https://arxiv.org/abs/2511.14593}{2511.14593}), detects neutrino flux via inverse beta decay (IBD), which is \textbf{inefficient} in the low-energy neutrino region ($<1~\text{MeV}$).}
+
+The correct flux from a purely theoretical calculation (as in \href{https://arxiv.org/abs/2304.14992}{2304.14992}) should sum over all possible beta-decay channels from all produced nuclei (about $10^4$ branches) with the correct branching ratios. Therefore, using directly calculated data, the low-energy flux is enhanced by a factor of $10^2$–$10^3$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/CENvS/Daya_Bay_IBD_10m.png}
+    \caption{IBD measured flux, Daya bay 10 m, CEN$\nu$S event rate}
+    \label{fig:daya-ibd-CENvS-10m}
+\end{figure}
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/CENvS/Daya_Bay_calc_10m.png}
+    \caption{All decay channels flux, Daya bay 10 m, CEN$\nu$S event rate}
+    \label{fig:daya-calc-CENνS-10m}
+\end{figure}
+ 
+
+
+\subsection{Other sources}
+\subsubsection{Solar neutrino flux}
+
+Data are extracted from Fig.~1 of \href{https://arxiv.org/abs/1801.10159}{1801.10159}—a theoretical calculation validated by the SNO experiment—where the flux of continuum sources ($^8\mathrm{B}$, $^{13}\mathrm{N}$, $^{15}\mathrm{O}$, $^{17}\mathrm{F}$, and hep) is given in units of $\mathrm{cm}^{-2}\,\mathrm{s}^{-1}\,\mathrm{MeV}^{-1}$. For monoenergetic neutrinos, we use the values from Table~I, modeling them as Gaussian wave packets with $\sigma = 0.05\,\mathrm{MeV}$ to facilitate numerical integration.
+
+The flux used here represents the total from all three neutrino flavors (verified by comparison with \href{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.92.181301}{PhysRevLett.92.181301}). Since electron neutrinos scatter differently from the other two flavors, we require the electron neutrino fraction of the total flux. Although a detailed calculation of this fraction at the JUNO site is available in \href{https://arxiv.org/abs/2006.11760}{2006.11760}, we approximate it as one third for each flavor.
+
+%insert figure
+
+\subsubsection{T2K neutrino beam flux}
+
+
+Data extracted from \url{https://t2k-experiment.org/result_category/flux/}.
+
+The ND280 flux is calculated as the average flux at a $150\times150\,\mathrm{cm}^2$ plane that is centered in the ND280 near detector volume. Fluxes we used is for +250 kA (neutrino enhanced beam). All flux predictions are normalized to $10^{21}$ protons delivered to the T2K production target (Protons On Target, POT).
+
+The operation of T2K is pulsed. The proton beam from the Magnetic Ring (MR) consists of eight bunches with width around 80 ns ($3\sigma$), referred to as a spill, produced every 2.48 s (\href{https://arxiv.org/abs/2303.03222}{2303.03222}).  The upgrade of T2K by around 2026 will reduce the time between beam spills from 2.48 s to 1.16 s and increase the number of protons per spill from $2.65\times10^{14}$ to $3.2\times10^{14}$ (\url{https://t2k-experiment.org/beyond-t2k/}). We use $3.2\times10^{14}$ POT per 1.16 s to convert the above data to $\mathrm{cm}^{-2}\mathrm{s}^{-1}\mathrm{MeV}^{-1}$.
+
+\subsubsection{Atmospheric/cosmic neutrino flux}
+
+It is sub-dominate at energy scale of interest $\mathcal{O}(1-10)$ MeV, so we neglect it for now. See caption of Fig. 1 of \href{https://arxiv.org/abs/1801.10159}{1801.10159} and FIG. 1. of \href{https://arxiv.org/abs/2002.07499}{2002.07499}.
+
+\subsubsection{China Spallation Neutron Source (CSNS)}
+CSNS employs a tungsten (W) target bombarded by protons with an average kinetic energy of $1.6~\text{GeV}$. Several reaction channels dominate the production of neutrinos.
+
+When a proton strikes the tungsten target, $\pi^{\pm}$, $\pi^{0}$, and $K$ mesons are produced, with pions being the most abundant. The $\pi^{\pm}$ subsequently decay into a muon and an (anti)muon neutrino. The muon then decays into an electron, an (anti)electron neutrino, and an (anti)muon neutrino:
+
+\begin{equation}
+    p + W \rightarrow
+    \left.
+    \begin{cases}
+    \pi^+ \rightarrow \mu^+ + \nu_\mu,\ 
+    \mu^+ \rightarrow e^+ + \nu_e + \bar{\nu}_\mu, \\
+    \pi^- \rightarrow \mu^- + \bar{\nu}_\mu,\ 
+    \mu^- \rightarrow e^- + \bar{\nu}_e + \nu_\mu.
+    \end{cases}
+    \right.
+\end{equation}
+
+For a rough approximation, we assume that a pion emitted from the tungsten (W) target is stationary or has negligible momentum. Thus, the pion decay is treated as a two-body process, and the muon and (anti)muon neutrino are emitted isotropically with fixed momenta. And because the pion decays within a timescale of $\sim 1~\text{ns}$, whereas the muon decays within a timescale of $\sim 1~\mu\text{s}$, if the detector is located tens of meters from the target, the muons can be regarded as originating from a point source with an isotropic distribution and fixed momentum.
+
+Under these approximations, the three-body muon decay is straightforward to calculate. The normalized outgoing neutrino spectra can be written in analytical form \href{https://doi.org/10.1016/S0146-6410(02)00127-8}{(https://doi.org/10.1016/S0146-6410(02)00127-8)}. For a total flux of $2.42 \times 10^{10}~\mathrm{cm}^{-2}\,\mathrm{h}^{-1}\,\mathrm{flavor}^{-1}$, the neutrino spectra from $\pi^+$ are used in our calculation.
+
+\textcolor{red}{The flux of CSNS is 3-4 orders smaller than solar neutrino, which makes it hardly to be detected via our method.}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/CENvS/CSNS_anti_nu_mu.png}
+    \caption{CSNS $\bar \nu_\mu$ CEN$\nu$S event rate} 
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/CENvS/CSNS_nu_e.png}
+    \caption{CSNS $ \nu_e$ CEN$\nu$S event rate} 
+\end{figure}
+
+
+\section{Coherent Elastic Neutrino-Nucleus Scattering} 
+\subsection{Standard Model Cross-Section}
+Coherent Elastic Neutrino-Nucleus Scattering (CE$\nu$NS) is a Standard Model weak neutral current process in which a neutrino scatters off an entire nucleus. For a target nucleus with mass $M$, proton number $Z$, and neutron number $N$, the differential cross-section with respect to the nuclear recoil energy $T_{nr}$ is given by:
+\begin{equation}
+    \frac{d\sigma}{dT_{nr}} = \frac{G_F^2 M}{2\pi} Q_W^2 F^2(Q^2) \left[ 2 - \frac{M T_{nr}}{E_\nu^2} \right],
+\end{equation}
+where $G_F$ is the Fermi coupling constant, $E_\nu$ is the incident neutrino energy, and $Q^2 \approx 2 M T_{nr}$ is the squared momentum transfer. The weak nuclear charge $Q_W$ is defined as:
+\begin{equation}
+    Q_W = N - \big(1 - 4\sin^2\theta_W\big) Z,
+\end{equation}
+where $\theta_W$ is the weak mixing angle (Weinberg angle). Since $\sin^2\theta_W \approx 0.23$, the proton contribution is small ($1 - 4\sin^2\theta_W \approx 0.08$), and \textcolor{red}{the cross-section is approximately proportional to $N^2$.}
+
+The nuclear form factor $F(Q^2)$ describes the loss of coherence as the momentum transfer increases. For low-energy reactor neutrinos ($E_\nu < 10~\text{MeV}$), the momentum transfer is small ($QR < 1$, where $R$ is the nuclear radius), and $F(Q^2) \approx 1$, ensuring that the scattering remains fully coherent.
+
+
+
+
+\section{Background noise}
+Detecting CEvNS or NMM signals requires a low energy threshold and a high signal-to-noise ratio. As demonstrated in the RELICS experiment analysis, a comprehensive understanding and suppression of backgrounds are essential. The backgrounds can be categorized into environmental radioactivity, cosmic-ray induced events, and irreducible neutrino backgrounds.
+
+\subsection{Solar neutrino}
+Solar neutrinos constitute an irreducible, unshieldable background. The origin of this background is solar fusion, which produces a continuous flux of neutrinos. These can scatter via both CE$\nu$NS and elastic scattering off electrons. While this forms the ultimate "neutrino floor" for dark matter searches, for a reactor experiment, the reactor flux at the detector should be stronger than the solar floor by many orders. We have calculated the expected event rate from solar neutrinos using standard solar models. However, this background is expected to be negligible during reactor-ON periods and will primarily serve as a consistency check for our background model during reactor-OFF commissioning runs.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/CENvS/Solar_equal_flavor_solar_flux.png}
+    \caption{Solar neutrino induced noise} 
+\end{figure}
+
+\subsection{Radioactive isotopes}
+Radioactivity from detector materials and the surrounding environment is typically the dominant source of background noise. The origin of this background is trace amounts of primordial isotopes in the shielding, detector components, and the silicon crystal itself. Beta decays within materials produce electrons, while gamma rays from decays Compton scatter off electrons in the silicon target. Both processes generate signals, which are the primary background. The latter process can be summarized as:
+\begin{equation}
+    (A, Z)^* \rightarrow (A, Z) + \gamma; \quad \gamma + e^- \rightarrow \gamma' + e^-_{\text{recoil}}
+\end{equation}
+Following the strategy of low-background experiments like RELICS, we should perform a dedicated material analysis to estimate isotope abundance. These abundances will be used as input for a Geant4 simulation to calculate the resulting ER event rate.
+
+\subsection{Cosmic ray neutrons}
+High-energy neutrons produced in the atmosphere are a critical background for the CE$\nu$NS search. The origin of this background is high-energy protons from cosmic rays interacting with atmospheric nuclei, creating a shower of secondary particles, including energetic neutrons (CRNs) that can reach ground level. CRNs interact with silicon nuclei primarily through elastic scattering ($n + \text{Si} \rightarrow n' + \text{Si}_{\text{recoil}}$). This produces a Nuclear Recoil (NR) signal that is, on an event-by-event basis, indistinguishable from a CE$\nu$NS signal. As identified by RELICS, this is a major NR background component that must be suppressed. To address this, we should use the CRY (Cosmic-Ray Shower Library) library to generate the surface neutron flux and spectrum. This will be input into a Geant4 simulation of our shielding design to calculate the residual event rate in the silicon target. The primary mitigation strategy is a thick, hydrogenous shield (e.g., water or polyethylene) surrounding the detector to moderate and absorb the neutrons.
+
+\subsection{Cosmic ray muons}
+For surface-level experiments, the high flux of cosmic muons introduces significant challenges. These muons originate from cosmic ray air showers. While muons passing directly through the detector are easily identified, their secondary effects are more problematic. Muons can interact with the dense shielding materials and produce spallation neutrons. These "muon-induced neutrons" are highly penetrating and time-correlated with the parent muon. The primary mitigation is an active muon veto system, likely composed of plastic scintillator panels enclosing the entire experimental setup. When a muon is detected by the veto, a coincidence window is opened, and any event occurring in the main detector during this window is rejected. The time resolution and efficiency of this veto system will be critical parameters in our design and simulation.
+
+\subsection{Others}
+For our silicon detector, we also have include thermal noise, electronic readout noise possibly captured by the SQUID amplifiers. These backgrounds typically dominate at the lowest energies and set the ultimate analysis threshold of the experiment.
+
+
+
+\appendix
+
+
+\section{Neutrino magmatic moment (NMM) and other small signals}
+\subsection{Effective interaction for NMM}
+The effective interaction of a neutrino with an electromagnetic field can be described by its electromagnetic current, $J_{\rm em}^\mu$. Following the parametrization outlined in \href{https://arxiv.org/abs/hep-ph/0305206}{hep-ph/0305206}, the matrix element for this current is given by:
+\begin{equation}
+    \left\langle \nu(p^\prime) | J_{\rm em}^\mu | \nu(p) \right\rangle = \bar{u}\Lambda^\mu(q) u
+\end{equation}
+The vertex function $\Lambda^\mu(q)$ can generally be expressed in terms of four form factors:
+\begin{equation}
+    \Lambda^\mu(q) = f_Q(q^2)\,\gamma^\mu + f_M\, i \sigma^{\mu\nu} q_\nu - f_E\, \sigma^{\mu\nu} q_\nu \gamma_5 + f_A \big(q^2 \gamma^\mu - q^\mu \slashed{q}\big) \gamma_5.
+\end{equation}
+Within this framework, the form factor $f_M$ is the term responsible for the neutrino magnetic moment (NMM).
+
+At low energies, it is natural to describe this phenomenon using the simplest effective operator for the NMM:
+\begin{equation}
+    \mathcal{O}_{\rm NMM} = g_{\rm eff}\, \bar{\nu}\, \sigma_{\mu\nu}\, \nu\, F^{\mu\nu}.
+\end{equation}
+The effective coupling constant $g_{\rm eff}$ is constrained both theoretically and experimentally. While loop effects within the Standard Model provide a theoretical lower bound for $g_{\rm eff}$, current experimental upper bounds are compiled by the Particle Data Group (PDG).
+\subsubsection{Note on Parameter Choice}
+The differential cross section for the neutrino magnetic moment (NMM) is proportional to the effective NMM, $\mu_\text{eff}^2$, so the event rate is also proportional to $\mu_\text{eff}^2$.
+
+The lower bound is theoretically determined by the Standard Model (SM) prediction. As derived from the minimally extended SM with Dirac neutrinos, this value is approximately $\mu_\nu \sim 3 \times 10^{-20}\,\mu_B$, which is orders of magnitude smaller than the sensitivity of current experiments. We treat $\mu_\text{eff}$ as a parameter arising from new physics (parametrized as an EFT operator above) and use the current experimental upper limits.
+
+A summary of the leading constraints from various experimental and observational frontiers is listed below:
+
+\begin{itemize}
+    \item[$\star$] \textbf{Borexino (Solar Neutrinos):} Through precision spectroscopy of solar neutrinos, Borexino provides the leading constraint for electron neutrinos at $\mu_{\nu_e} < 2.8 \times 10^{-11}\,\mu_B$.
+
+    \item \textbf{GEMMA (Reactor Neutrinos):} Using a high-purity germanium detector near a nuclear reactor core, GEMMA establishes a robust limit for electron antineutrinos of $\mu_{\bar{\nu}_e} < 2.9 \times 10^{-11}\,\mu_B$.
+
+    \item \textbf{XENONnT (Solar Neutrinos):} Utilizing a liquid xenon time projection chamber, the XENONnT experiment sets the strongest direct laboratory limit to date at $\mu_\nu < 6.4 \times 10^{-12}\,\mu_B$.
+
+    \item \textbf{Astrophysical Limits (Astrophysics):} Observations of the cooling rates of red giants in globular clusters provide the most stringent, albeit model-dependent, upper limit of $\mu_\nu < 2.2 \times 10^{-12}\,\mu_B$.
+\end{itemize}
+
+We use Borexino data in the plots.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/NMM/Daya_Bay_calc_10m.png}
+    \caption{All decay channels flux, Daya bay 10m, NMM event rate}
+    \label{fig:daya-NMM-10m}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/NMM/CSNS_nu_e.png}
+    \caption{All decay channels flux, Daya bay 10m, NMM event rate} 
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig theory/NMM/CSNS_anti_nu_mu.png}
+    \caption{All decay channels flux, Daya bay 10m, NMM event rate} 
+\end{figure}
+
+\subsection{Light mediators}
+To observe the enhancement as $T^{-\alpha}$ in the low recoil energy region, we need to introduce a light mediator (lighter than the region of interest to our detector) to obtain a pole in the amplitude.   
+
+\subsubsection{Spin-0: ALP or Others}
+We consider a light scalar or pseudoscalar mediator ($a$, Axion-Like Particle). The interaction Lagrangian typically takes the form of a Yukawa coupling:
+\begin{equation}
+    \mathcal{L}_{\text{scalar}} \supset g_\phi \bar{\nu} \nu \phi \quad \text{or} \quad \mathcal{L}_{\text{pseudo}} \supset i g_a \bar{\nu} \gamma_5 \nu a
+\end{equation}
+In the chiral basis, the scalar bilinear $\bar{\nu}\nu$ (and similarly $\bar{\nu}\gamma_5\nu$) decomposes into $\bar{\nu}_R \nu_L + \bar{\nu}_L \nu_R$. This indicates that scalar and pseudoscalar interactions are chirality-flipping.
+
+In the Standard Model, neutrinos are purely left-handed ($\nu_L$). If we assume neutrinos are Dirac fermions but do not include a light right-handed counterpart (assume no sterile neutrino or highly suppressed), the term $\bar{\nu}_L \nu_L$ vanishes identically due to the properties of Lorentz group representations. Therefore, for a pure flux of left-handed SM Dirac neutrinos, scattering mediated by a spin-0 particle is forbidden.
+
+\subsubsection{Spin-1: Dark Photon}
+We consider a new light vector boson $A'$ (often associated with a $U(1)'$ gauge symmetry, such as $U(1)_{B-L}$) with mass $M_{A'}$ and coupling constant $g'$. The interaction preserves chirality ($\bar{\nu}_L \gamma^\mu \nu_L$). The contribution to the neutrino–electron differential cross section is given by:
+\begin{equation}
+    \frac{d\sigma_{A'}}{dT} = \frac{g'^2 g_e'^2 m_e}{4\pi \big(2m_e T + M_{A'}^2\big)^2},
+\end{equation}
+where $T$ is the electron recoil energy. This expression also exhibits a $1/T^2$ enhancement. However, the current constraints on $U(1)_{B-L}$ are quite stringent.
+
+In our region of interest, where the mediator mass is negligible ($M_{A'}^2 \ll 2m_e T$), the cross section scales as $1/T^2$, making the signal phenomenologically degenerate with the neutrino millicharge model (\textbf{to be detailed}).
+
+\subsection{Local Contact Terms}
+Local contact amplitudes, such as dimension-8 operators, introduce an additional $T^2$ enhancement and thus spoil the low-energy enhancement we aim to achieve.
+
+
+\end{document}
