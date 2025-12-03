@@ -148,4 +148,95 @@
     \end{columns}
 \end{frame}
 
+\section{Spallation Neutron Source}
+
+\begin{frame}
+    \frametitle{COHERENT's Germanium Array}
+     \begin{columns}[T]
+        \column{0.48\textwidth}
+           PhysRevLett.134.231801
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.95\linewidth]{spallation/geometry.png}
+                \vspace{-0.2cm}
+                \caption{Geometry}
+            \end{figure}
+             
+        \column{0.52\textwidth}
+            Technical details:
+            \begin{itemize}
+                \setlength{\itemsep}{1em}
+                 \item Detector placed 19.2 m. $90^o$ degree  
+                 \item SNS is 1.5 MW to 1.7 MW; 60 Hz. 29\% protons are converted to neutrinos.
+                 \item Neutrons (including SNS induced) are shielded and ignored. 
+                 \item HP Ge array ROI: $1.5-20 \rm\ keV_{ee} \approx 6.7-80\ keV_{nr}$.
+                 \item Averaged neutrino flux is about $6\times 10^7 \rm cts/cm^2/s/flavor$ and peak neutrino flux is about $2\times 10^{12} \rm cts/cm^2/s/flavor$.
+                 \item CENvS rate:$\sim 12.6 \rm cts /kg/y$, SNR: $\sim 1$.
+            \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The result of COHERENT measurement}
+        \begin{columns}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=.75\textwidth]{spallation/on-off data.png}
+        \end{figure}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{spallation/spectra.png}
+        \end{figure}
+    \end{columns}
+    ...
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pulse creation time scale}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+           10.1103/PhysRevD.106.032003
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.95\linewidth]{spallation/pulse time.png}
+                \vspace{-0.2cm}
+                \caption{Neutrino pulse creation time.}
+            \end{figure}
+             
+        \column{0.52\textwidth}
+        About the pulse shape:
+            \begin{itemize}
+                \setlength{\itemsep}{1em}
+                \item Instant pulse (red) is from pion decay (26 ns) and thus its width depends on proton pulse. 
+                \item Delay (blue) pulse from muon decay has a tail like $\exp(-\Gamma t)$ since muon life time is 2200ns.
+            \end{itemize}
+        \vspace{1em}
+
+        For CSNS (170MW, 25Hz) averaged neutrino flux is $6.72 \times 10^6 \rm /cm^2/s$, and its peak neutrino flux is about $6\times 10^{11}\rm cts/cm^2/s/flavor$.
+
+        \vspace{1em}
+
+        The average flux domains the event rate and for our ROI (10-100eV) on CSNS, $<0.1$ events/year/kg is expected.
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Event rates based on the averaged flux}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{fig theory/CENvS/CSNS_nu_e.png}
+        \end{figure}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{fig theory/CENvS/CSNS_anti_nu_mu.png}
+        \end{figure}
+    \end{columns}
+    In range of nuclear recoil energy 0-10keV, the event rate per energy is nearly a constant and thus a wide ROI is helpful.
+\end{frame}
+
 \end{document}
