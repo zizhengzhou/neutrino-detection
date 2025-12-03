@@ -6,11 +6,11 @@
 %--------------------------------------------------------------------------
 % Meta Information
 %--------------------------------------------------------------------------
-\title{Proposal for Detector Shielding Design}
-\subtitle{Adoption of CONUS Experiment Geometry}
-\author[Your Name]{Your Name} % Short author in brackets, full name in braces
-\institute[UCAS]{University of Chinese Academy of Sciences}
-\date{\today}
+% \title{Proposal for Detector Shielding Design}
+% \subtitle{Adoption of CONUS Experiment Geometry}
+% \author[Your Name]{Your Name} % Short author in brackets, full name in braces
+% \institute[UCAS]{University of Chinese Academy of Sciences}
+% \date{\today}
 
 \begin{document}
 
@@ -21,16 +21,16 @@
 %     \titlepage
 % \end{frame}
 
-\section{Geometry Proposal}
-
-
+\section{CONUS}
+\subsection{Geometry Proposal}
 \begin{frame}{CONUS Shielding Geometry}
     \begin{columns}[c]
          
         \column{0.45\textwidth}
+            10.1088/1742-6596/1342/1/012094
             \begin{figure}
                 \centering 
-                \includegraphics[width=\linewidth]{CONUS/geometry.png} 
+                \includegraphics[width=.96\linewidth]{CONUS/geometry.png} 
                 \caption{\footnotesize Top view of the shield layers.}
             \end{figure}
         \column{0.55\textwidth}
@@ -39,7 +39,7 @@
             \vspace{0.5em}
             
             \begin{itemize}
-                \setlength{\itemsep}{0.2em} % Increase spacing between items
+                \setlength{\itemsep}{0.15em} % Increase spacing between items
                 
                 \item \textbf{Outer Pb} (5 cm): \\
                 Suppress external $\gamma$-radiation.  
@@ -58,6 +58,92 @@
                 
             \end{itemize}
             The sealed steel cage encloses the shield. 1.3 standard liters per minute breathing air purges the detector chamber to suppress Rn.
+    \end{columns}
+\end{frame}
+
+\subsection{Background}
+%--------------------------------------------------------------------------
+% Slide 2: Shielding Effectiveness
+%--------------------------------------------------------------------------
+\begin{frame}{Suppression of Reactor-Correlated Background}
+    \begin{columns}[c]
+        
+        % Left Column: Figure 27
+        \column{0.5\textwidth}
+
+        1903.09269
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.65\linewidth]{CONUS/component background event rates.png} 
+                \caption{\footnotesize Nuclear recoil(Ge) backgrounds of neutrons.}
+            \end{figure}
+
+        % Right Column: Data Analysis
+        \column{0.5\textwidth}
+            \small
+            \textbf{Key Findings from MC Simulation \& Measurement:}
+            \vspace{0.8em}
+            
+            \begin{itemize}
+                \setlength{\itemsep}{0.2em}
+                
+                \item \textbf{Reactor:}
+                The neutron flux from the reactor core is \textbf{not leading} background after passing through the shield.
+                
+                \item \textbf{Muon includes:}
+                Muon induced neutrons in shield should be removed via veto, while \textbf{Muon induced neutrons in concrete (outside shield) is leading} neutron background event rates.
+                
+                \item \textbf{Conclusion:} \\
+                The proposed geometry (25 cm Pb + Borated PE) is \textbf{highly effective} against reactor radiation.
+                The total background of neutrons in our ROI ($\sim 100$ events/y/kg) is smaller than the solar background.
+                
+            \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Neutron flux(MC)}
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{CONUS/component background flux.png}
+        \caption{MC neutron background}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Gamma Ray Background Environment}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+           1903.09269 Outside gamma rays
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.95\linewidth, height=0.36\textheight, keepaspectratio]{CONUS/gamma ray outside below 2700.png}
+                \vspace{-0.3cm}
+                \caption{Natural Radioactivity}
+            \end{figure}
+            
+            \vspace{-0.7cm}
+  
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.95\linewidth, height=0.36\textheight, keepaspectratio]{CONUS/gamma ray outside above 2700.png}
+                \vspace{-0.3cm}
+                \caption{Reactor-Correlated ${}^{16}\text{N}$ lines.}
+            \end{figure}
+
+        \column{0.52\textwidth}
+            Gamma rays may have electron recoil (Compton scattering) and induce the background.
+            \vspace{1em}
+
+            \textbf{Shielding Efficiency (Internal):}
+            \vspace{1em}
+            \begin{itemize}
+                \setlength{\itemsep}{1em}
+                \item The \textbf{25 cm Pb} shield effectively blocks all gamma ray.
+                \item \textbf{MC Simulation Result:} \\
+                Inside the shield, the reactor-induced $\gamma$ count rate (0--450 keV) is:
+                \begin{center}
+                     $0.0401\pm0.0073$/kg/y
+                \end{center}
+                \item \textbf{Conclusion:} Gamma rays are \textbf{completely suppressed} and can be ignored.
+            \end{itemize}
     \end{columns}
 \end{frame}
 
