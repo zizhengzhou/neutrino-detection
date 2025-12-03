@@ -1,0 +1,170 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UCAS.sty
+%
+% A custom Beamer style file for a report with enhanced package support
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{UCAS}[2025/04/17 ZZZ custom UCAS Beamer report style]
+
+%--------------------------------------------------------------------------
+% Load packages using \RequirePackage (this is equivalent to \usepackage)
+%--------------------------------------------------------------------------
+% AMS math packages for advanced math typesetting
+\RequirePackage{amsmath, amsfonts, amssymb}
+
+% Extended math font commands and tools
+\RequirePackage{mathrsfs, mathtools}
+
+% Graphics inclusion
+\RequirePackage{graphicx}
+
+% Enhanced float placement options
+\RequirePackage{float}
+
+% Support for subfigures (consider subcaption in new documents)
+\RequirePackage{subfigure}
+
+% Multiple columns for layout flexibility
+\RequirePackage{multicol}
+
+% Professional quality tables
+\RequirePackage{booktabs}
+
+% Support for multirow table cells
+\RequirePackage{multirow}
+
+% Customizable captions for figures and tables
+\RequirePackage{caption}
+
+% Enhanced enumerate environment for list customization
+\RequirePackage{enumerate}
+
+% Hyperlink support for interactive PDFs
+\RequirePackage{hyperref}
+
+% Physics shorthand commands
+\RequirePackage{physics}
+
+% Feynman slashed notation for high energy physics
+\RequirePackage{slashed}
+
+% Control over document spacing (line spacing etc.)
+\RequirePackage{setspace}
+
+%--------------------------------------------------------------------------
+% Begin Beamer-specific customizations
+%--------------------------------------------------------------------------
+\mode<presentation>
+ 
+
+% \usetheme{Darmstadt}
+\usecolortheme{whale}
+\usefonttheme[onlymath]{serif}
+
+% Option for section headers (currently disabled by default)
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+%\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+% Set the outer theme with a customized footline
+\useoutertheme[footline=authorinstitutetitle,subsection=false]{smoothbars}
+\setbeamertemplate{headline}{}
+\makeatletter
+  % Define a command and separator for frame numbering
+  \newcommand{\frameofframes}{/}
+  \newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
+  \setbeamertemplate{footline}%
+  {%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      % 左侧：section/subsection
+      {\usebeamerfont{title in head/foot}\insertsection \quad \insertsubsection}%
+      % 中间：shortauthor
+      \hfill%
+      {\usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}\insertshortauthor}%
+      % 右侧：frame count
+      \hfill%
+      {\usebeamerfont{frame number}\usebeamercolor[fg]{frame number}%
+      \insertframenumber~\frameofframes~\inserttotalframenumber}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+    \end{beamercolorbox}%
+  }
+\makeatother
+
+% Set the inner theme
+\useinnertheme{circles}
+
+% Uncomment below alternatives if needed
+%\useoutertheme{default}
+%\useinnertheme[shadow=true]{rounded}
+
+% Define a custom color named "ucas"
+\xdefinecolor{ucas}{RGB}{23,73,148}  %RGB #174994
+
+% Apply the custom color in various elements
+\setbeamercolor{footline}{bg=ucas}
+\setbeamercolor{frametitle}{bg=ucas,fg=white}
+\setbeamercolor{title}{bg=ucas}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}{}
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!50!black}
+%\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+% Additional customizations for blocks and sidebar elements
+\setbeamercolor{block title}{bg=ucas,fg=white}
+\setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=ucas}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{item projected}{fg=white}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+%\setbeamercolor{palette sidebar quaternary}{fg=white}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=ucas}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{fg=ucas}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+
+% Customize the table of contents for subsections
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=5.65ex%
+  \llap{\raisebox{0.2ex}{\textcolor{structure}{$\blacktriangleright$}}\kern1ex}%
+  \inserttocsubsection\par%
+}
+
+% Automatically insert the table of contents at the beginning of sections
+\AtBeginSection[]{
+  \begin{frame}
+    \tableofcontents[sectionstyle=show/shaded,%
+                      subsectionstyle=show/shaded/hide,%
+                      subsubsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+% \AtBeginSubsection[]{
+%   \begin{frame}
+%     \tableofcontents[sectionstyle=show/shaded,%
+%                       subsectionstyle=show/shaded/hide,%
+%                       subsubsectionstyle=show/shaded/hide]
+%   \end{frame}
+% }
+
+\setcounter{tocdepth}{2}
+
+\mode<all>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of UCAS.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

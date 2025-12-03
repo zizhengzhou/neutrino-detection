@@ -3,5 +3,9 @@
 *.fdb_latexmk
 *.log
 *.out
+*.nav
+*.snm
+*.toc
 main.pdf
 *.synctex.gz
+show.pdf

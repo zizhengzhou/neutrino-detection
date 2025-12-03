@@ -1,0 +1,64 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% Load the custom style file
+\usepackage{UCAS}
+
+%--------------------------------------------------------------------------
+% Meta Information
+%--------------------------------------------------------------------------
+\title{Proposal for Detector Shielding Design}
+\subtitle{Adoption of CONUS Experiment Geometry}
+\author[Your Name]{Your Name} % Short author in brackets, full name in braces
+\institute[UCAS]{University of Chinese Academy of Sciences}
+\date{\today}
+
+\begin{document}
+
+%--------------------------------------------------------------------------
+% Title Slide
+%--------------------------------------------------------------------------
+% \begin{frame}
+%     \titlepage
+% \end{frame}
+
+\section{Geometry Proposal}
+
+
+\begin{frame}{CONUS Shielding Geometry}
+    \begin{columns}[c]
+         
+        \column{0.45\textwidth}
+            \begin{figure}
+                \centering 
+                \includegraphics[width=\linewidth]{CONUS/geometry.png} 
+                \caption{\footnotesize Top view of the shield layers.}
+            \end{figure}
+        \column{0.55\textwidth}
+            \small
+            \textbf{Layer Sequence (Outside $\to$ Inside):}
+            \vspace{0.5em}
+            
+            \begin{itemize}
+                \setlength{\itemsep}{0.2em} % Increase spacing between items
+                
+                \item \textbf{Outer Pb} (5 cm): \\
+                Suppress external $\gamma$-radiation.  
+
+                \item \textbf{Plastic Scintillator} (5.2 cm): \\
+                Active veto for cosmic muons ($\mu$) (placed inside outer lead to reduce trigger rate).
+                
+                \item \textbf{Intermediate Pb} (2 $\times$ 5 cm): \\
+                Shield radiation from veto PMTs.
+                
+                \item \textbf{Borated PE} (2 $\times$ 5 cm): \\
+                Moderate fast neutrons and capture thermal neutrons.
+                
+                \item \textbf{Inner Pb} (2 $\times$ 5 cm): \\
+                Absorb secondary $\gamma$-rays produced by neutron capture.
+                
+            \end{itemize}
+            The sealed steel cage encloses the shield. 1.3 standard liters per minute breathing air purges the detector chamber to suppress Rn.
+    \end{columns}
+\end{frame}
+
+\end{document}
