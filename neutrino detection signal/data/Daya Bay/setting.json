@@ -1,0 +1,16 @@
+[
+    {
+        "flux_file_path": "data/Daya Bay/calc_DayaBay_10m_with_uncertainty.csv",
+        "figure_save_name": "output/Daya_Bay_calc_10m.png",
+        "title": "Daya Bay - calc DayaBay 10m",
+        "neutrino_type": "e_bar",
+        "plot_flux_x_limit": 10.0
+    },
+    {
+        "flux_file_path": "data/Daya Bay/calc_DayaBay_500m_with_uncertainty.csv",
+        "figure_save_name": "output/Daya_Bay_calc_500m.png",
+        "title": "Daya Bay - calc DayaBay 500m",
+        "neutrino_type": "e_bar",
+        "plot_flux_x_limit": 10.0
+    }
+]

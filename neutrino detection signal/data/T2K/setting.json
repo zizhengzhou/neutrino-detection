@@ -1,0 +1,30 @@
+[
+    {
+        "flux_file_path": "data/T2K/T2K anti-nue.csv",
+        "figure_save_name": "output/T2K_T2K_anti-nue.png",
+        "title": "T2K - $\\bar\\nu_e$",
+        "neutrino_type": "e_bar",
+        "plot_flux_x_limit": 15000.0
+    },
+    {
+        "flux_file_path": "data/T2K/T2K anti-numu.csv",
+        "figure_save_name": "output/T2K_T2K_anti-numu.png",
+        "title": "T2K - $\\bar\\nu_\\mu$",
+        "neutrino_type": "mu_bar",
+        "plot_flux_x_limit": 15000.0
+    },
+    {
+        "flux_file_path": "data/T2K/T2K nue.csv",
+        "figure_save_name": "output/T2K_T2K_nue.png",
+        "title": "T2K - $\\nu_e$",
+        "neutrino_type": "e",
+        "plot_flux_x_limit": 15000.0
+    },
+    {
+        "flux_file_path": "data/T2K/T2K numu.csv",
+        "figure_save_name": "output/T2K_T2K_numu.png",
+        "title": "T2K - $\\nu_\\mu$",
+        "neutrino_type": "mu",
+        "plot_flux_x_limit": 15000.0
+    }
+]
