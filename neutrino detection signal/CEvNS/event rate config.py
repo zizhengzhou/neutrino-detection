@@ -33,7 +33,12 @@ AMU_MEV = 931.4941
 
 TARGET_PROPERTIES = {
     'Si': {'Z': 14, 'A': 28, 'molar_mass_kg': 28.0855 / 1000.0},
-    'Xe': {'Z': 54, 'A': 131, 'molar_mass_kg': 131.293 / 1000.0}
+    'Xe': {'Z': 54, 'A': 131, 'molar_mass_kg': 131.293 / 1000.0},
+    'Ge': {'Z': 32, 'A': 73, 'molar_mass_kg': 72.630 / 1000.0},
+    # 砷化镓 (Gallium Arsenide) - 等效处理
+    # GaAs 是化合物，Ga(Z=31, A~69.7) 和 As(Z=33, A~74.9)
+    # 平均 Z = 32, 平均质量 = (69.723 + 74.922)/2 = 72.3225
+    'GaAs': {'Z': 32, 'A': 72, 'molar_mass_kg': 72.3225 / 1000.0}
 }
 
 
@@ -236,7 +241,7 @@ def run_analysis(config):
     # === FIG 2: Diff Sigma ===
     ax_diff_sigma.loglog(T_recoil_kev, diff_sigma_max, lw=3, color='tab:red')
     # 恢复 Cutoff 标记
-    ax_diff_sigma.axvline(T_peak_limit_kev, color='k', ls=':', label=f'Peak Flux ({T_peak_limit_kev:.2f} keV)')
+    ax_diff_sigma.axvline(T_peak_limit_kev, color='k', ls=':', label=f'Peak Flux ({T_peak_limit_kev:.1e} keV)')
 
     ax_diff_sigma.set(xlabel='Recoil Energy T [keV]',
                       ylabel=r'd$\sigma$/dT [cm$^2$/keV]',
@@ -318,7 +323,7 @@ def run_analysis(config):
     if len(valid_rates) > 0:
         ax_rate.set_ylim(bottom=valid_rates.min(), top=valid_rates.max() * 5)
 
-    ax_rate.legend(loc='upper right')
+    # ax_rate.legend(loc='upper right')
     ax_rate.grid(True, which='both')
 
     # Save
