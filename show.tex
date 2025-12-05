@@ -37,7 +37,35 @@
             \caption{Xe target}
         \end{figure}
     \end{columns}
-    From 10eV to 1000eV, the event rate per energy increases about 1 order for Si, while it increases about 5 orders for Xe. The difference is due to the mass of the target. We suggest to use heavy particles like Ge, GaAs \dots as the target.
+    From 10eV to 1000eV, the event rate per energy increases about 1 order for Si, while it increases about 5 orders for Xe. The difference is due to the mass of the target. 
+    We suggest to use heavy particles like Ge(5.4 Si signal), GaAs(5.1 Si signal) \dots as the target.
+\end{frame}
+
+\begin{frame}{Neutrino Flux usage}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{fig theory/CENvS/flux usage.png}
+        \end{figure}
+
+        \column{0.4\textwidth}
+        For a specific nuclear recoil energy($T$) detection threshold, 
+        only neutrinos with sufficient energy have nonzero cross section due to the kinematic constraint.
+
+        \vspace{1em}
+
+        $  E^{\rm cutoff}_\nu = (T + \sqrt{T^2 + 2T M_{\rm target}}) / 2$
+
+        \vspace{2em}
+
+        Total neutrinos contributed to the CENvS signal is:
+        $\Phi\equiv\int_{E^{\rm cutoff}_\nu}^\infty \phi_\nu(E_\nu) dE_\nu$.
+
+        \vspace{1em}
+
+        A lower detection threshold can cover more neutrinos.
+    \end{columns}
 \end{frame}
 
 \section{CONUS}
