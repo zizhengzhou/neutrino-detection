@@ -1,0 +1,3 @@
+/Users/goukaixiang/Documents/Neutrino/Geant4_examples/B1/build/CMakeFiles/exampleB1.dir
+/Users/goukaixiang/Documents/Neutrino/Geant4_examples/B1/build/CMakeFiles/edit_cache.dir
+/Users/goukaixiang/Documents/Neutrino/Geant4_examples/B1/build/CMakeFiles/rebuild_cache.dir
