@@ -1,0 +1,82 @@
+# =============================================================
+# cosmic_muon.mac
+# 场景：海平面宇宙线缪子 (Cosmic Ray Muons)
+# 特点：主要成分是 mu- 和 mu+，平均能量约 4 GeV，角分布为 cos^2(theta)
+# =============================================================
+
+# 1. 初始化
+/run/initialize
+/run/verbose 1
+
+# =============================================================
+# 源 1: Muon- (负缪子)
+# 占比约 45% - 50%
+# =============================================================
+/gps/source/intensity 1.0
+/gps/particle mu-
+
+# --- 位置设置 ---
+# 定义一个位于实验室上方的水平平面源 (模拟天空)
+# 你的实验室(World)尺寸大约是 3m+，所以我们用 4m x 4m 的平面覆盖它
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/centre 0 0 2.5 m   # 高度 Z=2.5m (位于混凝土屏蔽层上方)
+/gps/pos/halfx 2.0 m        # 半宽 2m -> 全宽 4m
+/gps/pos/halfy 2.0 m
+
+# --- 角度设置 ---
+# 宇宙线不是垂直落下的，而是服从 cos^n(theta) 分布
+# type cos 默认模拟各向同性通量穿过平面，接近真实的角分布
+/gps/ang/type cos
+
+# --- 能谱设置 ---
+# 海平面缪子能谱：
+# 峰值在 3-4 GeV 左右，有一个长长的高能尾巴
+# 这里使用插值直方图 (Arbitrary Point-wise) 近似
+/gps/ene/type Arb
+/gps/hist/type arb
+/gps/hist/point 0.1 0.02    # 100 MeV (低能部分较少，被大气衰减)
+/gps/hist/point 0.5 0.10
+/gps/hist/point 1.0 0.40
+/gps/hist/point 3.0 1.00    # 峰值 ~3-4 GeV
+/gps/hist/point 10.0 0.30
+/gps/hist/point 50.0 0.05
+/gps/hist/point 100.0 0.01  # 高能尾巴
+/gps/hist/inter Lin         # 线性插值
+
+# =============================================================
+# 源 2: Muon+ (正缪子)
+# 占比约 50% - 55% (由于正电荷过剩，正缪子略多)
+# 使用 /gps/source/add 添加第二个源
+# =============================================================
+/gps/source/add 1.1        # 强度设为 1.1，体现正缪子略多
+/gps/particle mu+
+
+# 位置、角度、能谱与 mu- 相同
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/centre 0 0 2.5 m
+/gps/pos/halfx 2.0 m
+/gps/pos/halfy 2.0 m
+
+/gps/ang/type cos
+
+/gps/ene/type Arb
+/gps/hist/type arb
+/gps/hist/point 0.1 0.02
+/gps/hist/point 0.5 0.10
+/gps/hist/point 1.0 0.40
+/gps/hist/point 3.0 1.00
+/gps/hist/point 10.0 0.30
+/gps/hist/point 50.0 0.05
+/gps/hist/point 100.0 0.01
+/gps/hist/inter Lin
+
+# =============================================================
+# 运行
+# =============================================================
+# 缪子穿透力极强，大部分会直接穿过整个装置
+# 但只有极少数会正好打中中间微小的 MKID 或在铅里产生中子
+# 所以通常需要跑比较大的统计量
+/run/printProgress 1000
+/run/beamOn 10000

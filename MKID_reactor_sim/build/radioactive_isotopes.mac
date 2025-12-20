@@ -1,0 +1,127 @@
+# =============================================================
+# radioactive_isotopes.mac
+# 场景：立方体壳层屏蔽层内部的放射性杂质
+# =============================================================
+
+/run/initialize
+/run/verbose 1
+
+# =============================================================
+# 通用设置：定义一个足够大的采样盒子 (Sampling Box)
+# 我们使用长方体 (Para) 来贴合你的立方体几何
+# Half x/y/z = 1.0 m 足够包住你所有的屏蔽层
+# =============================================================
+
+# --- 源 1: 外层铜壳 (Cu2) 中的 Co-60 ---
+/gps/source/intensity 1.0
+/gps/particle ion
+/gps/ion 27 60 0 0      # Co-60
+/gps/energy 0 eV
+
+/gps/pos/type Volume
+/gps/pos/shape Para     # 【修改】改为长方体，更贴合立方体壳
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Cu2    # 【关键】只在 Cu2 壳层(肉)里产生，Geant4会自动扣除内部空洞
+/gps/ang/type iso
+
+# --- 源 2: 内层铜壳 (Cu1) 中的 Co-60 ---
+/gps/source/add 1.0
+/gps/particle ion
+/gps/ion 27 60 0 0
+/gps/energy 0 eV
+
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Cu1
+/gps/ang/type iso
+
+# --- 源 3: 铅壳 Pb5 (Pb-210) ---
+/gps/source/add 5.0
+/gps/particle ion
+/gps/ion 82 210 0 0     # Pb-210
+/gps/energy 0 eV
+
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Pb5
+/gps/ang/type iso
+
+# --- 源 4: 铅壳 Pb4 ---
+/gps/source/add 5.0
+/gps/particle ion
+/gps/ion 82 210 0 0
+/gps/energy 0 eV
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Pb4
+/gps/ang/type iso
+
+# --- 源 5: 铅壳 Pb3 ---
+/gps/source/add 5.0
+/gps/particle ion
+/gps/ion 82 210 0 0
+/gps/energy 0 eV
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Pb3
+/gps/ang/type iso
+
+# --- 源 6: 铅壳 Pb2 ---
+/gps/source/add 5.0
+/gps/particle ion
+/gps/ion 82 210 0 0
+/gps/energy 0 eV
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Pb2
+/gps/ang/type iso
+
+# --- 源 7: 最内层铅壳 Pb1 ---
+/gps/source/add 5.0
+/gps/particle ion
+/gps/ion 82 210 0 0
+/gps/energy 0 eV
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 1.0 m
+/gps/pos/halfy 1.0 m
+/gps/pos/halfz 1.0 m
+/gps/pos/confine Pb1
+/gps/ang/type iso
+
+# --- 源 8: 样品盒铝壳 (SampleBoxPV) ---
+# 注意：SampleBoxPV 是实心的（里面装着 MKID 芯片，但这通常忽略不计或视为一体）
+/gps/source/add 0.5
+/gps/particle ion
+/gps/ion 19 40 0 0      # K-40
+/gps/energy 0 eV
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/pos/halfx 0.5 m    # 样品盒比较小，采样盒子可以缩小一点提高效率
+/gps/pos/halfy 0.5 m
+/gps/pos/halfz 0.5 m
+/gps/pos/confine SampleBoxPV
+/gps/ang/type iso
+
+# =============================================================
+# 运行
+# =============================================================
+/run/printProgress 1000
+/run/beamOn 100000
