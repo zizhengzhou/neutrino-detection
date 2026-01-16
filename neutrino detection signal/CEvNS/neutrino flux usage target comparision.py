@@ -21,14 +21,19 @@ plt.rcParams.update({
     'lines.linewidth': 2
 })
 
-FILENAME = '../data/Daya Bay/calc_DayaBay_10m_with_uncertainty.csv'
+FILENAME = '../data/Daya Bay/calc_relic_25m_1core.csv'
 
 # Define cases
 cases = [
-    {'label': 'Si', 'T_eV': 10, 'mass': 28.0855, 'color': '#1f77b4', 'ls': '-'},
-    {'label': 'Ge', 'T_eV': 10, 'mass': 72.64, 'color': '#2ca02c', 'ls': '--'},
-    {'label': 'Xe', 'T_eV': 630, 'mass': 131.293, 'color': '#d62728', 'ls': '-.'},
-    # {'label': 'Xe', 'T_eV': 1360, 'mass': 131.293, 'color': '#9467bd', 'ls': ':'}
+
+    {'label': 'Si', 'T_eV': 100, 'mass': 28, 'color': '#2236E0', 'ls': '-'},
+    {'label': 'Ge', 'T_eV': 100, 'mass': 72.6, 'color': '#E0CE22', 'ls': '-'},
+    {'label': 'Ge', 'T_eV': 1000, 'mass': 72.6, 'color': '#F07A12', 'ls': '-'},
+    {'label': 'CaWO4', 'T_eV': 100, 'mass': 288, 'color': '#22E0CA', 'ls': '-'},
+    {'label': 'Li2Mo4', 'T_eV': 100, 'mass': 174, 'color': '#E02222', 'ls': '-'},
+    {'label': 'Xe', 'T_eV': 630, 'mass': 131.293, 'color': '#302C43', 'ls': '--'},
+
+
 ]
 
 
